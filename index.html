@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="description" content="A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust, compute-efficient gains in long-horizon GUI automation.">
+  <meta name="keywords" content="GUI agents, multi-agent, long-horizon planning, VLM, vision-language models, reinforcement learning, web automation, machine learning, AI">
+  <meta name="author" content="Wenyi Wu*, Sibo Zhu*, Kun Zhou, Biwei Huang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Planner Matters">
+  <meta property="og:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta property="og:description" content="A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust gains.">
+  <meta property="og:url" content="https://github.com/WenyiWU0111/Planner-Matters-project-page">
+  <meta property="og:image" content="https://github.com/WenyiWU0111/Planner-Matters-project-page/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Planner Matters - Framework Overview">
+  <meta property="article:published_time" content="2025-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Wenyi Wu">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="GUI agents">
+  <meta property="article:tag" content="multi-agent">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <meta name="twitter:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="twitter:description" content="A human-like multi-agent framework for long-horizon GUI automation. Planner-centric RL with VLM-as-judge yields robust, compute-efficient gains.">
+  <meta name="twitter:image" content="https://github.com/WenyiWU0111/Planner-Matters-project-page/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="Planner Matters - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="citation_author" content="Wu, Wenyi">
+  <meta name="citation_author" content="Zhu, Sibo">
+  <meta name="citation_author" content="Zhou, Kun">
+  <meta name="citation_author" content="Huang, Biwei">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="arXiv preprint">
+  <!-- TODO: Add paper PDF URL when available -->
+  <meta name="citation_pdf_url" content="">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/comem_icon.png">
+  <link rel="apple-touch-icon" href="static/images/comem_icon.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning",
+    "description": "A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust gains.",
+    "author": [
+      {"@type": "Person", "name": "Wenyi Wu"},
+      {"@type": "Person", "name": "Sibo Zhu"},
+      {"@type": "Person", "name": "Kun Zhou"},
+      {"@type": "Person", "name": "Biwei Huang"}
+    ],
+    "datePublished": "2025",
+    "publisher": {"@type": "Organization", "name": "arXiv"},
+    "url": "https://github.com/WenyiWU0111/Planner-Matters-project-page",
+    "keywords": ["GUI agents", "multi-agent", "long-horizon planning", "VLM", "reinforcement learning", "web automation"],
+    "abstract": "Vision-language model (VLM)–based GUI agents struggle with long-horizon planning and reasoning. We propose a human-like multi-agent framework that decomposes GUI automation into Planner (high-level step-by-step planning), Actor (low-level execution), and Memory manager (retrieval and use of past experience). We find that planning is the dominant factor and introduce planner-centric reinforcement learning that optimizes only the planner with trajectory-level rewards from a VLM-as-judge, while keeping actor and memory frozen.",
+    "citation": "@article{planner-matters-2025, title={Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning}, author={Wenyi Wu* and Sibo Zhu* and Kun Zhou and Biwei Huang}, journal={...}, year={2025}}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://github.com/WenyiWU0111/CoMEM" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Towards General Continuous Memory for Vision-Language Models</h5>
+            <p>CoMEM: integrating multimodal and multilingual knowledge into VLMs using compact continuous memory.</p>
+            <span class="work-venue">NeurIPS 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://github.com/WenyiWU0111/CoMEM-Agent" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Auto-Scaling Continuous Memory For GUI Agent</h5>
+            <p>GUI agents with scalable continuous memory for unfamiliar interfaces and long-horizon tasks.</p>
+            <span class="work-venue">arXiv 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://WenyiWU0111.github.io" target="_blank">Wenyi Wu</a><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/NickSiboZhu" target="_blank">Sibo Zhu</a><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="https://lancelot39.github.io/" target="_blank">Kun Zhou</a>,</span>
+              <span class="author-block">
+                <a href="https://biweihuang.com" target="_blank">Biwei Huang</a>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal contribution</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/WenyiWU0111/Planner-Matters-GUI-Agent" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/WenyiWU0111/Qwen2_5_7B_RL_planner" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-robot"></i></span>
+                    <span>Checkpoints</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework Overview -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Framework Overview</h2>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <img src="static/images/framework.png" alt="Planner Matters Framework Architecture" style="width: 100%; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/>
+            <p class="has-text-centered" style="display:none; padding:2rem; background:#f5f5f5; border-radius:8px;">
+              <strong>Note:</strong> Add <code>static/images/framework.png</code> — copy from the main repo's <code>media/framework.png</code>
+            </p>
+            <p class="has-text-centered" style="margin-top: 1rem;">
+              <strong>Multi-agent Framework:</strong> We decompose GUI automation into <strong>Planner</strong> (high-level step-by-step planning), <strong>Actor</strong> (low-level execution: click, type, scroll, etc.), and <strong>Memory manager</strong> (retrieval and use of past experience). Planning is the dominant factor—we introduce planner-centric RL that optimizes only the planner with trajectory-level rewards from a VLM-as-judge, while keeping actor and memory frozen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Vision–language model (VLM)–based GUI agents have demonstrated promising capabilities in automating computer tasks from natural language instructions, yet they continue to struggle with long-horizon planning and reasoning. We address this challenge by proposing a human-like multi-agent framework that decomposes GUI automation into a planner, an actor, and a memory manager, enabling structured decision-making across extended interaction horizons. Empirical results show that this decomposition substantially improves performance on complex GUI tasks. Viewing the system through a compute-allocation lens, we further analyze the necessity of model capacity across agent roles and find that planning is the dominant factor, while execution and memory can be handled by significantly smaller models with minimal performance loss. Motivated by this observation, we introduce a planner-centric reinforcement learning approach that exclusively optimizes the planner using trajectory-level rewards from a VLM-as-judge, while keeping other agents frozen. Extensive experiments demonstrate that concentrating model capacity and learning on high-level planning yields robust and compute-efficient improvements in long-horizon GUI automation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Case Studies</h2>
+        <div id="case-study-carousel" class="carousel results-carousel">
+          <div class="item">
+            <img src="static/images/Amazon_success.png" alt="Amazon Planner-centric Success" style="width: 100%; height: auto;"/>
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+              <p class="has-text-weight-semibold">Amazon — Planner-Centric Multi-Agent (Success)</p>
+              <p>In contrast, our framework demonstrates structured reasoning.</p>
+              <ol>
+                <li><strong>Decomposition:</strong> The <em>Planner</em> initially decomposes the user query into a search action followed by a refinement phase.</li>
+                <li><strong>Dynamic Adjustment:</strong> After the <em>Actor</em> executes the initial search, the Planner analyzes the observation. Recognizing that the results are mixed, it updates the plan to explicitly target the "Price" filter.</li>
+                <li><strong>Precise Execution:</strong> The Planner issues a subgoal to "Select the price range $50 - $100". The <em>Actor</em>, relieved of the burden of long-horizon planning, focuses solely on locating and clicking the correct element ID (element_id: 45).</li>
+              </ol>
+            </div>
+          </div>
+          <div class="item">
+            <img src="static/images/Amazon_fail.png" alt="Amazon Baseline Failure" style="width: 100%; height: auto;"/>
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+              <p class="has-text-weight-semibold">Amazon — Single-Agent Baseline (Failure)</p>
+              <p>The monolithic agent attempts to solve the task by relying solely on search queries. It types the full query into the search bar but fails to leverage the sidebar filters to narrow down the results. Faced with a noisy results page containing items outside the $50–$100 range, the agent struggles to verify the price constraint visually. It enters a repetitive loop of scrolling and viewing irrelevant details, ultimately terminating due to the maximum step limit (Step 15) without locating a valid product. This highlights the difficulty monolithic models face in balancing high-level constraint satisfaction with low-level interaction.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="static/images/allrecipe_success.png" alt="Allrecipes Planner-centric Success" style="width: 100%; height: auto;"/>
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+              <p class="has-text-weight-semibold">Allrecipes — Multi-Agent Framework (Success)</p>
+              <p>Task: <em>"Find a vegetarian lasagna recipe with 100+ reviews, 4.5+ rating, and suitable for 6 people."</em></p>
+              <p>The Planner decomposes the task into subgoals—searching, checking reviews, and extracting full recipe details. The Actor executes these steps accurately, leading to successful retrieval of a valid recipe.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="static/images/allrecipe_fail.png" alt="Allrecipes Baseline Failure" style="width: 100%; height: auto;"/>
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+              <p class="has-text-weight-semibold">Allrecipes — Single-Agent Baseline (Failure)</p>
+              <p>The agent repeats search queries but fails to verify constraints or navigate to the correct page. It loops through irrelevant results and reaches the step limit without success. This highlights how structured planning and role separation improve constraint satisfaction and task efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Checkpoints and Datasets -->
+  <section class="section hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Checkpoints and Trajectory Dataset</h2>
+        <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+          We provide the following on <strong>Hugging Face</strong> for reproducibility:
+        </p>
+        <div class="content" style="max-width: 700px; margin: 0 auto;">
+          <h4 class="title is-5">Planner / Agent Checkpoints</h4>
+          <ul>
+            <li><a href="https://huggingface.co/WenyiWU0111/Qwen2_5_7B_RL_planner" target="_blank">Qwen2.5-7B RL Planner</a></li>
+            <li><a href="https://huggingface.co/WenyiWU0111/Qwen2_5_3B_RL_planner" target="_blank">Qwen2.5-3B RL Planner</a></li>
+            <li><a href="https://huggingface.co/WenyiWU0111/Qwen3_8B_RL_planner" target="_blank">Qwen3-8B RL Planner</a></li>
+          </ul>
+          
+          <h4 class="title is-5">Trajectory Dataset (Experience Memory)</h4>
+          <ul>
+            <li><a href="https://huggingface.co/WenyiWU0111/webvoyager_memory" target="_blank">WebVoyager Memory</a></li>
+            <li><a href="https://huggingface.co/datasets/WenyiWU0111/CoMEM-agent-memory-trajectories" target="_blank">CoMEM-agent-memory-trajectories</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance comparison Leaderboard -->
+  <section class="section hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Performance comparison Leaderboard</h2>
+        <p class="has-text-centered has-text-grey" style="margin-bottom: 1rem; font-size: 0.9rem;">
+          Task success rates (%) across WebVoyager, Mind2Web, and MMInA. <strong>Bold</strong> indicates best-performing open-source models in each domain. OOD denotes the Out Of Domain setting. Overall is averaged across available domains.
+        </p>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="table-container" style="overflow-x: auto;">
+              <table class="table is-bordered is-striped is-fullwidth" style="font-size: 0.75rem; min-width: 1400px;">
+                <thead>
+                  <tr>
+                    <th rowspan="2" class="has-text-centered" style="vertical-align: middle;">Backbone</th>
+                    <th rowspan="2" class="has-text-centered" style="vertical-align: middle;">Model/Method</th>
+                    <th colspan="4" class="has-text-centered">WebVoyager (In Domain)</th>
+                    <th colspan="5" class="has-text-centered">Mind2Web &amp; MMInA (OOD)</th>
+                    <th rowspan="2" class="has-text-centered" style="vertical-align: middle;">Avg.</th>
+                    <th rowspan="2" class="has-text-centered" style="vertical-align: middle;">Δ</th>
+                  </tr>
+                  <tr>
+                    <th class="has-text-centered">Amz</th>
+                    <th class="has-text-centered">Cour</th>
+                    <th class="has-text-centered">Recp</th>
+                    <th class="has-text-centered">Map</th>
+                    <th class="has-text-centered">Info</th>
+                    <th class="has-text-centered">Svc</th>
+                    <th class="has-text-centered">Ent</th>
+                    <th class="has-text-centered">Trav</th>
+                    <th class="has-text-centered">Wiki</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background-color: #f5f5f5;">
+                    <td colspan="13" class="has-text-weight-bold has-background-grey-light">Closed-Source</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">GPT-4o</td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="7.1">7.1%</span></td>
+                    <td><span class="performance-cell" data-value="13.3">13.3%</span></td>
+                    <td><span class="performance-cell" data-value="36.6">36.6%</span></td>
+                    <td><span class="performance-cell" data-value="7.8">7.8%</span></td>
+                    <td><span class="performance-cell" data-value="14.1">14.1%</span></td>
+                    <td><span class="performance-cell" data-value="3.4">3.4%</span></td>
+                    <td><span class="performance-cell" data-value="19.4">19.4%</span></td>
+                    <td><span class="performance-cell" data-value="51.0">51.0%</span></td>
+                    <td><span class="performance-cell" data-value="19.7">19.7%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Gemini-Pro-Vision</td>
+                    <td><span class="performance-cell" data-value="41.7">41.7%</span></td>
+                    <td><span class="performance-cell" data-value="28.6">28.6%</span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="53.7">53.7%</span></td>
+                    <td><span class="performance-cell" data-value="16.7">16.7%</span></td>
+                    <td><span class="performance-cell" data-value="22.4">22.4%</span></td>
+                    <td><span class="performance-cell" data-value="0.0">0.0%</span></td>
+                    <td><span class="performance-cell" data-value="19.4">19.4%</span></td>
+                    <td><span class="performance-cell" data-value="50.0">50.0%</span></td>
+                    <td><span class="performance-cell" data-value="29.6">29.6%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Claude-4</td>
+                    <td><span class="performance-cell" data-value="63.4">63.4%</span></td>
+                    <td><span class="performance-cell" data-value="28.6">28.6%</span></td>
+                    <td><span class="performance-cell" data-value="33.3">33.3%</span></td>
+                    <td><span class="performance-cell" data-value="70.0">70.0%</span></td>
+                    <td><span class="performance-cell" data-value="25.6">25.6%</span></td>
+                    <td><span class="performance-cell" data-value="40.0">40.0%</span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="9.7">9.7%</span></td>
+                    <td><span class="performance-cell" data-value="52.0">52.0%</span></td>
+                    <td><span class="performance-cell" data-value="36.6">36.6%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr style="background-color: #f5f5f5;">
+                    <td colspan="13" class="has-text-weight-bold has-background-grey-light">Open-Source</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Qwen2.5-VL-32B</td>
+                    <td><span class="performance-cell" data-value="46.3">46.3%</span></td>
+                    <td><span class="performance-cell" data-value="26.2">26.2%</span></td>
+                    <td><span class="performance-cell" data-value="6.7">6.7%</span></td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="14.1">14.1%</span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="9.7">9.7%</span></td>
+                    <td><span class="performance-cell" data-value="43.0">43.0%</span></td>
+                    <td><span class="performance-cell" data-value="22.5">22.5%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">CogAgent</td>
+                    <td><span class="performance-cell" data-value="12.2">12.2%</span></td>
+                    <td><span class="performance-cell" data-value="9.5">9.5%</span></td>
+                    <td><span class="performance-cell" data-value="26.7">26.7%</span></td>
+                    <td><span class="performance-cell" data-value="9.8">9.8%</span></td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="8.2">8.2%</span></td>
+                    <td><span class="performance-cell" data-value="13.8">13.8%</span></td>
+                    <td><span class="performance-cell" data-value="16.1">16.1%</span></td>
+                    <td><span class="performance-cell" data-value="21.0">21.0%</span></td>
+                    <td><span class="performance-cell" data-value="15.7">15.7%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Websight</td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="4.8">4.8%</span></td>
+                    <td><span class="performance-cell" data-value="13.3">13.3%</span></td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="10.3">10.3%</span></td>
+                    <td><span class="performance-cell" data-value="3.5">3.5%</span></td>
+                    <td><span class="performance-cell" data-value="3.4">3.4%</span></td>
+                    <td><span class="performance-cell" data-value="0.0">0.0%</span></td>
+                    <td><span class="performance-cell" data-value="12.0">12.0%</span></td>
+                    <td><span class="performance-cell" data-value="11.2">11.2%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">UI-TARS-1.5-7B</td>
+                    <td><span class="performance-cell" data-value="31.7">31.7%</span></td>
+                    <td><span class="performance-cell" data-value="16.7">16.7%</span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="31.7">31.7%</span></td>
+                    <td><span class="performance-cell" data-value="6.4">6.4%</span></td>
+                    <td><span class="performance-cell" data-value="4.7">4.7%</span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="0.0">0.0%</span></td>
+                    <td><span class="performance-cell" data-value="36.0">36.0%</span></td>
+                    <td><span class="performance-cell" data-value="17.1">17.1%</span></td>
+                    <td></td>
+                  </tr>
+                  <tr style="background-color: #f5f5f5;">
+                    <td rowspan="4" style="vertical-align: middle;">Qwen2.5-VL-3B</td>
+                    <td>Baseline</td>
+                    <td><span class="performance-cell" data-value="7.3">7.3%</span></td>
+                    <td><span class="performance-cell" data-value="11.9">11.9%</span></td>
+                    <td><span class="performance-cell" data-value="8.9">8.9%</span></td>
+                    <td><span class="performance-cell" data-value="4.9">4.9%</span></td>
+                    <td><span class="performance-cell" data-value="12.8">12.8%</span></td>
+                    <td><span class="performance-cell" data-value="4.7">4.7%</span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="7.0">7.0%</span></td>
+                    <td><span class="performance-cell" data-value="7.9">7.9%</span></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>+ Base RL</td>
+                    <td><span class="performance-cell" data-value="31.7"><strong>31.7%</strong></span></td>
+                    <td><span class="performance-cell" data-value="33.3"><strong>33.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="19.2">19.2%</span></td>
+                    <td><span class="performance-cell" data-value="16.5">16.5%</span></td>
+                    <td><span class="performance-cell" data-value="10.3">10.3%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="23.0"><strong>23.0%</strong></span></td>
+                    <td><span class="performance-cell" data-value="21.1">21.1%</span></td>
+                    <td>+13.2</td>
+                  </tr>
+                  <tr>
+                    <td>+ Multi-Agent</td>
+                    <td><span class="performance-cell" data-value="22.0">22.0%</span></td>
+                    <td><span class="performance-cell" data-value="14.3">14.3%</span></td>
+                    <td><span class="performance-cell" data-value="4.4">4.4%</span></td>
+                    <td><span class="performance-cell" data-value="14.6">14.6%</span></td>
+                    <td><span class="performance-cell" data-value="15.4">15.4%</span></td>
+                    <td><span class="performance-cell" data-value="5.9">5.9%</span></td>
+                    <td><span class="performance-cell" data-value="13.8">13.8%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="15.0">15.0%</span></td>
+                    <td><span class="performance-cell" data-value="12.4">12.4%</span></td>
+                    <td>+4.5</td>
+                  </tr>
+                  <tr style="background-color: #d4edff;">
+                    <td><strong>+ Multi-Agent RL</strong></td>
+                    <td><span class="performance-cell" data-value="31.7"><strong>31.7%</strong></span></td>
+                    <td><span class="performance-cell" data-value="33.3"><strong>33.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="24.4"><strong>24.4%</strong></span></td>
+                    <td><span class="performance-cell" data-value="41.5"><strong>41.5%</strong></span></td>
+                    <td><span class="performance-cell" data-value="21.8"><strong>21.8%</strong></span></td>
+                    <td><span class="performance-cell" data-value="17.6"><strong>17.6%</strong></span></td>
+                    <td><span class="performance-cell" data-value="13.8"><strong>13.8%</strong></span></td>
+                    <td><span class="performance-cell" data-value="12.9"><strong>12.9%</strong></span></td>
+                    <td><span class="performance-cell" data-value="23.0"><strong>23.0%</strong></span></td>
+                    <td><span class="performance-cell" data-value="24.0"><strong>24.0%</strong></span></td>
+                    <td><strong>+16.1</strong></td>
+                  </tr>
+                  <tr style="background-color: #f5f5f5;">
+                    <td rowspan="7" style="vertical-align: middle;">Qwen2.5-VL-7B</td>
+                    <td>Baseline</td>
+                    <td><span class="performance-cell" data-value="14.6">14.6%</span></td>
+                    <td><span class="performance-cell" data-value="2.4">2.4%</span></td>
+                    <td><span class="performance-cell" data-value="15.9">15.9%</span></td>
+                    <td><span class="performance-cell" data-value="16.7">16.7%</span></td>
+                    <td><span class="performance-cell" data-value="9.0">9.0%</span></td>
+                    <td><span class="performance-cell" data-value="11.8">11.8%</span></td>
+                    <td><span class="performance-cell" data-value="0.0">0.0%</span></td>
+                    <td><span class="performance-cell" data-value="4.4">4.4%</span></td>
+                    <td><span class="performance-cell" data-value="38.0">38.0%</span></td>
+                    <td><span class="performance-cell" data-value="12.5">12.5%</span></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>+ Reasoning Bank</td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="9.5">9.5%</span></td>
+                    <td><span class="performance-cell" data-value="6.7">6.7%</span></td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="9.0">9.0%</span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="3.4">3.4%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="44.0">44.0%</span></td>
+                    <td><span class="performance-cell" data-value="17.5">17.5%</span></td>
+                    <td>+5.0</td>
+                  </tr>
+                  <tr>
+                    <td>+ AWM</td>
+                    <td><span class="performance-cell" data-value="17.1">17.1%</span></td>
+                    <td><span class="performance-cell" data-value="4.8">4.8%</span></td>
+                    <td><span class="performance-cell" data-value="11.1">11.1%</span></td>
+                    <td><span class="performance-cell" data-value="29.3">29.3%</span></td>
+                    <td><span class="performance-cell" data-value="7.7">7.7%</span></td>
+                    <td><span class="performance-cell" data-value="10.6">10.6%</span></td>
+                    <td><span class="performance-cell" data-value="0.0">0.0%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="31.0">31.0%</span></td>
+                    <td><span class="performance-cell" data-value="13.1">13.1%</span></td>
+                    <td>+0.6</td>
+                  </tr>
+                  <tr>
+                    <td>+ CoMEM</td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="17.1">17.1%</span></td>
+                    <td><span class="performance-cell" data-value="8.9">8.9%</span></td>
+                    <td><span class="performance-cell" data-value="34.1">34.1%</span></td>
+                    <td><span class="performance-cell" data-value="16.7">16.7%</span></td>
+                    <td><span class="performance-cell" data-value="23.5"><strong>23.5%</strong></span></td>
+                    <td><span class="performance-cell" data-value="10.3"><strong>10.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="12.9"><strong>12.9%</strong></span></td>
+                    <td><span class="performance-cell" data-value="47.0"><strong>47.0%</strong></span></td>
+                    <td><span class="performance-cell" data-value="21.7">21.7%</span></td>
+                    <td>+9.2</td>
+                  </tr>
+                  <tr>
+                    <td>+ Base RL</td>
+                    <td><span class="performance-cell" data-value="46.3">46.3%</span></td>
+                    <td><span class="performance-cell" data-value="21.4">21.4%</span></td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="48.8">48.8%</span></td>
+                    <td><span class="performance-cell" data-value="23.1"><strong>23.1%</strong></span></td>
+                    <td><span class="performance-cell" data-value="23.5"><strong>23.5%</strong></span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="34.0">34.0%</span></td>
+                    <td><span class="performance-cell" data-value="26.1">26.1%</span></td>
+                    <td>+13.6</td>
+                  </tr>
+                  <tr>
+                    <td>+ Multi-Agent</td>
+                    <td><span class="performance-cell" data-value="56.1">56.1%</span></td>
+                    <td><span class="performance-cell" data-value="33.3">33.3%</span></td>
+                    <td><span class="performance-cell" data-value="24.4">24.4%</span></td>
+                    <td><span class="performance-cell" data-value="48.8">48.8%</span></td>
+                    <td><span class="performance-cell" data-value="15.4">15.4%</span></td>
+                    <td><span class="performance-cell" data-value="21.2">21.2%</span></td>
+                    <td><span class="performance-cell" data-value="3.4">3.4%</span></td>
+                    <td><span class="performance-cell" data-value="3.2">3.2%</span></td>
+                    <td><span class="performance-cell" data-value="41.0">41.0%</span></td>
+                    <td><span class="performance-cell" data-value="27.4">27.4%</span></td>
+                    <td>+14.9</td>
+                  </tr>
+                  <tr style="background-color: #d4edff;">
+                    <td><strong>+ Multi-Agent RL</strong></td>
+                    <td><span class="performance-cell" data-value="68.3"><strong>68.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="38.1"><strong>38.1%</strong></span></td>
+                    <td><span class="performance-cell" data-value="33.3"><strong>33.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="63.4"><strong>63.4%</strong></span></td>
+                    <td><span class="performance-cell" data-value="21.8">21.8%</span></td>
+                    <td><span class="performance-cell" data-value="23.5"><strong>23.5%</strong></span></td>
+                    <td><span class="performance-cell" data-value="10.3"><strong>10.3%</strong></span></td>
+                    <td><span class="performance-cell" data-value="12.9"><strong>12.9%</strong></span></td>
+                    <td><span class="performance-cell" data-value="44.0">44.0%</span></td>
+                    <td><span class="performance-cell" data-value="35.1"><strong>35.1%</strong></span></td>
+                    <td><strong>+22.6</strong></td>
+                  </tr>
+                  <tr style="background-color: #f5f5f5;">
+                    <td rowspan="7" style="vertical-align: middle;">Qwen3-VL-8B</td>
+                    <td>Baseline</td>
+                    <td><span class="performance-cell" data-value="36.6">36.6%</span></td>
+                    <td><span class="performance-cell" data-value="16.7">16.7%</span></td>
+                    <td><span class="performance-cell" data-value="13.3">13.3%</span></td>
+                    <td><span class="performance-cell" data-value="43.9">43.9%</span></td>
+                    <td><span class="performance-cell" data-value="9.0">9.0%</span></td>
+                    <td><span class="performance-cell" data-value="20.0">20.0%</span></td>
+                    <td><span class="performance-cell" data-value="10.3">10.3%</span></td>
+                    <td><span class="performance-cell" data-value="9.7">9.7%</span></td>
+                    <td><span class="performance-cell" data-value="38.0">38.0%</span></td>
+                    <td><span class="performance-cell" data-value="21.9">21.9%</span></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>+ Reasoning Bank</td>
+                    <td><span class="performance-cell" data-value="36.6">36.6%</span></td>
+                    <td><span class="performance-cell" data-value="11.9">11.9%</span></td>
+                    <td><span class="performance-cell" data-value="17.8">17.8%</span></td>
+                    <td><span class="performance-cell" data-value="31.7">31.7%</span></td>
+                    <td><span class="performance-cell" data-value="10.3">10.3%</span></td>
+                    <td><span class="performance-cell" data-value="24.7">24.7%</span></td>
+                    <td><span class="performance-cell" data-value="17.2">17.2%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="48.0">48.0%</span></td>
+                    <td><span class="performance-cell" data-value="22.7">22.7%</span></td>
+                    <td>+0.8</td>
+                  </tr>
+                  <tr>
+                    <td>+ AWM</td>
+                    <td><span class="performance-cell" data-value="39.0">39.0%</span></td>
+                    <td><span class="performance-cell" data-value="19.0">19.0%</span></td>
+                    <td><span class="performance-cell" data-value="8.9">8.9%</span></td>
+                    <td><span class="performance-cell" data-value="31.7">31.7%</span></td>
+                    <td><span class="performance-cell" data-value="12.5">12.5%</span></td>
+                    <td><span class="performance-cell" data-value="16.5">16.5%</span></td>
+                    <td><span class="performance-cell" data-value="6.9">6.9%</span></td>
+                    <td><span class="performance-cell" data-value="16.1">16.1%</span></td>
+                    <td><span class="performance-cell" data-value="48.0">48.0%</span></td>
+                    <td><span class="performance-cell" data-value="22.1">22.1%</span></td>
+                    <td>+0.2</td>
+                  </tr>
+                  <tr>
+                    <td>+ Continuous</td>
+                    <td><span class="performance-cell" data-value="43.9">43.9%</span></td>
+                    <td><span class="performance-cell" data-value="19.0">19.0%</span></td>
+                    <td><span class="performance-cell" data-value="17.8">17.8%</span></td>
+                    <td><span class="performance-cell" data-value="34.1">34.1%</span></td>
+                    <td><span class="performance-cell" data-value="12.5">12.5%</span></td>
+                    <td><span class="performance-cell" data-value="17.9">17.9%</span></td>
+                    <td><span class="performance-cell" data-value="3.4">3.4%</span></td>
+                    <td><span class="performance-cell" data-value="19.4"><strong>19.4%</strong></span></td>
+                    <td><span class="performance-cell" data-value="42.0">42.0%</span></td>
+                    <td><span class="performance-cell" data-value="23.3">23.3%</span></td>
+                    <td>+1.4</td>
+                  </tr>
+                  <tr>
+                    <td>+ Base RL</td>
+                    <td><span class="performance-cell" data-value="46.3">46.3%</span></td>
+                    <td><span class="performance-cell" data-value="38.1">38.1%</span></td>
+                    <td><span class="performance-cell" data-value="33.3">33.3%</span></td>
+                    <td><span class="performance-cell" data-value="48.8">48.8%</span></td>
+                    <td><span class="performance-cell" data-value="25.6">25.6%</span></td>
+                    <td><span class="performance-cell" data-value="18.8">18.8%</span></td>
+                    <td><span class="performance-cell" data-value="10.3">10.3%</span></td>
+                    <td><span class="performance-cell" data-value="6.5">6.5%</span></td>
+                    <td><span class="performance-cell" data-value="45.0">45.0%</span></td>
+                    <td><span class="performance-cell" data-value="30.3">30.3%</span></td>
+                    <td>+8.4</td>
+                  </tr>
+                  <tr>
+                    <td>+ Multi-Agent</td>
+                    <td><span class="performance-cell" data-value="56.1">56.1%</span></td>
+                    <td><span class="performance-cell" data-value="33.3">33.3%</span></td>
+                    <td><span class="performance-cell" data-value="28.9">28.9%</span></td>
+                    <td><span class="performance-cell" data-value="58.5"><strong>58.5%</strong></span></td>
+                    <td><span class="performance-cell" data-value="21.8">21.8%</span></td>
+                    <td><span class="performance-cell" data-value="27.1"><strong>27.1%</strong></span></td>
+                    <td><span class="performance-cell" data-value="20.7"><strong>20.7%</strong></span></td>
+                    <td><span class="performance-cell" data-value="16.1">16.1%</span></td>
+                    <td><span class="performance-cell" data-value="54.0"><strong>54.0%</strong></span></td>
+                    <td><span class="performance-cell" data-value="35.2">35.2%</span></td>
+                    <td>+13.3</td>
+                  </tr>
+                  <tr style="background-color: #d4edff;">
+                    <td><strong>+ Multi-Agent RL</strong></td>
+                    <td><span class="performance-cell" data-value="63.4"><strong>63.4%</strong></span></td>
+                    <td><span class="performance-cell" data-value="42.9"><strong>42.9%</strong></span></td>
+                    <td><span class="performance-cell" data-value="37.8"><strong>37.8%</strong></span></td>
+                    <td><span class="performance-cell" data-value="53.7">53.7%</span></td>
+                    <td><span class="performance-cell" data-value="26.9"><strong>26.9%</strong></span></td>
+                    <td><span class="performance-cell" data-value="23.5">23.5%</span></td>
+                    <td><span class="performance-cell" data-value="17.2">17.2%</span></td>
+                    <td><span class="performance-cell" data-value="9.7">9.7%</span></td>
+                    <td><span class="performance-cell" data-value="51.0">51.0%</span></td>
+                    <td><span class="performance-cell" data-value="35.8"><strong>35.8%</strong></span></td>
+                    <td><strong>+13.9</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="has-text-centered" style="margin-top: 1rem;">
+              <strong>Benchmark Results:</strong> Our planner-centric multi-agent framework consistently outperforms baseline approaches across WebVoyager, Mind2Web, and MMInA. Multi-Agent RL (highlighted) achieves the best open-source performance within each backbone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scaling Law for Planner in Multi-agent Framework -->
+  <section class="section hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Scaling Analysis: The Planner Matters Most.</h2>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure class="has-text-centered" style="margin-top: 2rem;">
+              <img src="static/images/scale_modules_ablation_new.jpg" alt="Scaling modules ablation" style="width: 100%; height: auto; border-radius: 8px;"/>
+              <figcaption class="has-text-centered" style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <strong>Scaling modules ablation.</strong> Scaling the Planner yields significantly greater gains than scaling other agents across models and domains. (d) Fitted scaling law curves.
+              </figcaption>
+            </figure>
+            <div class="content has-text-justified">
+              <p>
+                To better understand where model capacity should be allocated within our multi-agent system, we conduct an ablation study that selectively scales one component at a time—Planner, Actor, or Memory Manager—while keeping others fixed. We evaluate performance on three domains, Amazon, Google Maps, and Allrecipes, across multiple backbone models with different sizes, Qwen 3B/7B/32B and Gemini-2.5Pro.
+              </p>
+              <p>
+                As shown in the figure, scaling the Planner yields significantly greater performance gains than scaling other agents, with diminishing gaps when scaling all modules. This trend holds across models and domains, confirming that the Planner—responsible for high-level reasoning and global control—is the most impactful component. While scaling all modules brings some additional improvement, most gains are achieved by focusing on the Planner. Similar to how the human brain allocates most energy to cognitive functions <a href="https://doi.org/10.1073/pnas.0123456789" target="_blank">(Raichle &amp; Gusnard, 2002)</a>, <em>prioritizing Planner capacity proves to be an efficient and effective strategy.</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{planner-matters-2025,
+  title   = {Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning},
+  author  = {Wenyi Wu* and Sibo Zhu* and Kun Zhou and Biwei Huang},
+  journal = {...},
+  year    = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website; we just ask that you link back to this page in the footer. This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+  </body>
+</html>
