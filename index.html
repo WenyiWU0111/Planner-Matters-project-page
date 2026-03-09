@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- Primary Meta Tags -->
-  <meta name="title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning">
   <meta name="description" content="A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust, compute-efficient gains in long-horizon GUI automation.">
   <meta name="keywords" content="GUI agents, multi-agent, long-horizon planning, VLM, vision-language models, reinforcement learning, web automation, machine learning, AI">
   <meta name="author" content="Wenyi Wu*, Sibo Zhu*, Kun Zhou, Biwei Huang">
@@ -15,7 +15,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Planner Matters">
-  <meta property="og:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta property="og:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning">
   <meta property="og:description" content="A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust gains.">
   <meta property="og:url" content="https://github.com/WenyiWU0111/Planner-Matters-project-page">
   <meta property="og:image" content="https://github.com/WenyiWU0111/Planner-Matters-project-page/static/images/social_preview.png">
@@ -32,13 +32,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
   <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <meta name="twitter:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="twitter:title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning">
   <meta name="twitter:description" content="A human-like multi-agent framework for long-horizon GUI automation. Planner-centric RL with VLM-as-judge yields robust, compute-efficient gains.">
   <meta name="twitter:image" content="https://github.com/WenyiWU0111/Planner-Matters-project-page/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="Planner Matters - Research Preview">
 
   <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning">
+  <meta name="citation_title" content="Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning">
   <meta name="citation_author" content="Wu, Wenyi">
   <meta name="citation_author" content="Zhu, Sibo">
   <meta name="citation_author" content="Zhou, Kun">
@@ -60,7 +60,7 @@
   <link rel="preconnect" href="https://ajax.googleapis.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <title>Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning</title>
+  <title>Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/comem_icon.png">
@@ -96,7 +96,7 @@
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning",
+    "headline": "Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning",
     "description": "A human-like multi-agent framework that decomposes GUI automation into Planner, Actor, and Memory manager. Planning is the dominant factor; planner-centric RL yields robust gains.",
     "author": [
       {"@type": "Person", "name": "Wenyi Wu"},
@@ -163,7 +163,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning</h1>
+            <h1 class="title is-1 publication-title">Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon Planning</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://WenyiWU0111.github.io" target="_blank">Wenyi Wu</a><sup>*</sup>,</span>
@@ -235,7 +235,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Vision–language model (VLM)–based GUI agents have demonstrated promising capabilities in automating computer tasks from natural language instructions, yet they continue to struggle with long-horizon planning and reasoning. We address this challenge by proposing a human-like multi-agent framework that decomposes GUI automation into a planner, an actor, and a memory manager, enabling structured decision-making across extended interaction horizons. Empirical results show that this decomposition substantially improves performance on complex GUI tasks. Viewing the system through a compute-allocation lens, we further analyze the necessity of model capacity across agent roles and find that planning is the dominant factor, while execution and memory can be handled by significantly smaller models with minimal performance loss. Motivated by this observation, we introduce a planner-centric reinforcement learning approach that exclusively optimizes the planner using trajectory-level rewards from a VLM-as-judge, while keeping other agents frozen. Extensive experiments demonstrate that concentrating model capacity and learning on high-level planning yields robust and compute-efficient improvements in long-horizon GUI automation.
+              Vision–language model (VLM)–based GUI agents have demonstrated promising capabilities in automating computer tasks from natural language instructions, yet they continue to struggle with long-horizon planning and reasoning. We address this challenge by proposing a human-like multi-agent framework that decomposes GUI automation into a planner, an actor, and a memory manager, enabling structured decision-making across extended interaction horizons. Empirical results show that this decomposition substantially improves performance on complex GUI tasks, and is also effective in other scenarios like tool-use. Viewing the system through a compute-allocation lens, we further analyze the necessity of model capacity across agent roles and find that planning is the dominant factor, while execution and memory can be handled by significantly smaller models with minimal performance loss. Motivated by this observation, we introduce a planner-centric reinforcement learning approach that exclusively optimizes the planner using trajectory-level rewards from a VLM-as-judge, while keeping other agents frozen. Extensive experiments demonstrate that concentrating model capacity and learning on high-level planning yields robust and compute-efficient improvements in long-horizon agent automation.
             </p>
           </div>
         </div>
