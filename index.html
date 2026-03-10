@@ -170,13 +170,16 @@
               <span class="author-block">
                 <a href="https://github.com/NickSiboZhu" target="_blank">Sibo Zhu</a><sup>*</sup>,</span>
               <span class="author-block">
-                <a href="https://lancelot39.github.io/" target="_blank">Kun Zhou</a>,</span>
+                <a href="https://lancelot39.github.io/" target="_blank">Kun Zhou</a><sup>†</sup>,</span>
               <span class="author-block">
                 <a href="https://biweihuang.com" target="_blank">Biwei Huang</a>
               </span>
             </div>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>*</sup>Equal contribution</span>
+              <span class="author-block"><a href="mailto:franciskunzhou@gmail.com">franciskunzhou@gmail.com</a></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal contribution &nbsp;&nbsp; <sup>†</sup>Corresponding author</span>
             </div>
 
             <div class="column has-text-centered">
@@ -235,7 +238,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Vision–language model (VLM)–based GUI agents have demonstrated promising capabilities in automating computer tasks from natural language instructions, yet they continue to struggle with long-horizon planning and reasoning. We address this challenge by proposing a human-like multi-agent framework that decomposes GUI automation into a planner, an actor, and a memory manager, enabling structured decision-making across extended interaction horizons. Empirical results show that this decomposition substantially improves performance on complex GUI tasks, and is also effective in other scenarios like tool-use. Viewing the system through a compute-allocation lens, we further analyze the necessity of model capacity across agent roles and find that planning is the dominant factor, while execution and memory can be handled by significantly smaller models with minimal performance loss. Motivated by this observation, we introduce a planner-centric reinforcement learning approach that exclusively optimizes the planner using trajectory-level rewards from a VLM-as-judge, while keeping other agents frozen. Extensive experiments demonstrate that concentrating model capacity and learning on high-level planning yields robust and compute-efficient improvements in long-horizon agent automation.
+              Language model (LM)–based agents have demonstrated promising capabilities in automating complex tasks from natural language instructions, yet they continue to struggle with long-horizon planning and reasoning.. We address this challenge by proposing a human-like multi-agent framework that decomposes automation into a planner, an actor, and a memory manager, enabling structured decision-making across extended interaction horizons. Empirical results show that this decomposition substantially improves performance on complex GUI tasks, and is also effective in other scenarios like tool-use. Viewing the system through a compute-allocation lens, we further analyze the necessity of model capacity across agent roles and find that planning is the dominant factor, while execution and memory can be handled by significantly smaller models with minimal performance loss. Motivated by this observation, we introduce a planner-centric reinforcement learning approach that exclusively optimizes the planner using trajectory-level rewards from a VLM-as-judge, while keeping other agents frozen. Extensive experiments demonstrate that concentrating model capacity and learning on high-level planning yields robust and compute-efficient improvements in long-horizon agent automation. Our code is publicly released.
             </p>
           </div>
         </div>
@@ -1029,7 +1032,7 @@
       </div>
       <pre id="bibtex-code"><code>@article{planner-matters-2025,
   title   = {Planner Matters! An Efficient and Unbalanced Multi-agent Collaboration Framework for Long-horizon GUI Planning},
-  author  = {Wenyi Wu* and Sibo Zhu* and Kun Zhou and Biwei Huang},
+  author  = {Wenyi Wu* and Sibo Zhu* and Kun Zhou<sup>†</sup> and Biwei Huang},
   journal = {...},
   year    = {2025}
 }</code></pre>
